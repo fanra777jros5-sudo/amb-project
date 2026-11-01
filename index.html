@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d18">
+
+<meta name="description" content="AMB — Human Cyberization: Additional Mechanical Body. Исследовательский проект дополнительного механического тела.">
+
+<title>AMB Project | Additional Mechanical Body</title>
+
+<style>
+:root {
+    --background: #0d0b12;
+    --surface: #17131f;
+    --surface-light: #211a2c;
+    --purple: #a879ff;
+    --purple-light: #c5a4ff;
+    --text: #f4effa;
+    --muted: #b6aabd;
+    --border: #382b49;
+    --green: #9de2c1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13, 11, 18, 0.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    min-height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: var(--purple);
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--purple-light);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 590px;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(
+            ellipse at 80% 20%,
+            rgba(126, 77, 190, 0.22),
+            transparent 45%
+        );
+}
+
+.hero-content {
+    padding: 100px 0;
+}
+
+.eyebrow {
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 76px);
+    line-height: 1.08;
+    margin: 25px 0;
+    max-width: 850px;
+}
+
+.hero p {
+    max-width: 750px;
+    color: var(--muted);
+    font-size: 19px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.button {
+    display: inline-block;
+    padding: 13px 22px;
+    border-radius: 9px;
+    font-weight: bold;
+    background: var(--purple);
+    color: #170e23;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background: var(--purple-light);
+    transform: translateY(-2px);
+}
+
+.button-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.button-outline:hover {
+    background: var(--surface);
+}
+
+/* GENERAL SECTIONS */
+
+section {
+    padding: 85px 0;
+    border-top: 1px solid var(--border);
+}
+
+.section-title {
+    font-size: clamp(30px, 4vw, 42px);
+    margin: 15px 0 35px;
+}
+
+.section-description {
+    color: var(--muted);
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: linear-gradient(
+        145deg,
+        var(--surface-light),
+        var(--surface)
+    );
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.col-4 {
+    grid-column: span 4;
+}
+
+.col-6 {
+    grid-column: span 6;
+}
+
+.col-8 {
+    grid-column: span 8;
+}
+
+.col-12 {
+    grid-column: span 12;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+.card-label {
+    color: var(--green);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+/* ABOUT */
+
+.author-name {
+    color: var(--purple);
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* PROGRESS */
+
+.status {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.progress-item {
+    margin-top: 25px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 9px;
+    background: #30263b;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #8052d6,
+        #c19aff
+    );
+    border-radius: 20px;
+}
+
+/* TIMELINE */
+
+.timeline {
+    border-left: 2px solid var(--border);
+    margin-left: 10px;
+    padding-left: 25px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -32px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--purple);
+}
+
+.timeline-date {
+    color: var(--purple);
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* NOTICE */
+
+.notice {
+    background: #1c1526;
+    border-left: 3px solid var(--purple);
+    border-radius: 0 10px 10px 0;
+    padding: 20px;
+    color: var(--muted);
+    margin-top: 20px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 50px 0;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    color: var(--purple);
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    .navbar {
+        padding: 15px 0;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .col-4,
+    .col-6,
+    .col-8 {
+        grid-column: span 12;
+    }
+
+    .hero {
+        min-height: auto;
+    }
+
+    .hero-content {
+        padding: 75px 0;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+<div class="container navbar">
+
+<a href="#home" class="logo">AMB</a>
+
+<nav>
+<ul class="nav-links">
+<li><a href="#about">О проекте</a></li>
+<li><a href="#progress">Прогресс</a></li>
+<li><a href="#technology">Направления</a></li>
+<li><a href="#history">История</a></li>
+<li><a href="#author">Авторство</a></li>
+</ul>
+</nav>
+
+</div>
+</header>
+
+
+<!-- HOME -->
+
+<main>
+
+<div class="hero" id="home">
+<div class="container hero-content">
+
+<div class="eyebrow">
+Human Cyberization · Research Project
+</div>
+
+<h1>
+Additional<br>
+Mechanical Body
+</h1>
+
+<p>
+AMB — исследовательский проект, посвящённый
+разработке концепции дополнительного механического
+тела, позволяющего человеку взаимодействовать
+с окружающим миром на расстоянии.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#about" class="button">
+О проекте
+</a>
+
+<a href="#progress" class="button button-outline">
+Ход разработки
+</a>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+<div class="container">
+
+<div class="eyebrow">01 / About project</div>
+
+<h2 class="section-title">О проекте AMB</h2>
+
+<div class="grid">
+
+<div class="card col-8">
+
+<h3>Основная идея</h3>
+
+<p>
+Проект AMB исследует возможность создания
+дополнительного механического тела, которым
+человек сможет управлять удалённо.
+
+Предполагается, что система позволит человеку
+получать информацию об окружающей среде,
+взаимодействовать с объектами и другими людьми,
+находясь физически в другом месте.
+</p>
+
+<br>
+
+<p>
+Проект ориентирован на доступность технологий
+для обычных людей, а не исключительно на
+специализированные промышленные или научные задачи.
+</p>
+
+</div>
+
+<div class="card col-4">
+
+<div class="card-label">Project founder</div>
+
+<div class="author-name">Аксель Детoв (TDAxelDT)</div>
+
+<p>Авторский псевдоним</p>
+
+<br>
+
+<div class="card-label">Foundation date</div>
+
+<h3>21.10.2026</h3>
+
+<p>Начало проекта</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- PROGRESS -->
+
+<section id="progress">
+<div class="container">
+
+<div class="eyebrow">02 / Development</div>
+
+<h2 class="section-title">Ход разработки</h2>
+
+<p class="section-description">
+Текущий этап развития проекта и основные
+направления исследовательской деятельности.
+Проценты будут добавляться по мере появления
+подтверждённых результатов.
+</p>
+
+<div class="grid">
+
+<div class="card col-6">
+
+<div class="card-label">Current status</div>
+
+<h3>Формирование концепции</h3>
+
+<p class="status">● Исследовательский этап</p>
+
+<div class="progress-item">
+
+<div class="progress-info">
+<span>Общий прогресс</span>
+<span>Не установлен</span>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width:0%"></div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card col-6">
+
+<h3>Направления исследования</h3>
+
+<div class="progress-item">
+
+<div class="progress-info">
+<span>Концепция системы</span>
+<span>В работе</span>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width:0%"></div>
+</div>
+
+</div>
+
+<div class="progress-item">
+
+<div class="progress-info">
+<span>Роботизированная платформа</span>
+<span>Исследование</span>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width:0%"></div>
+</div>
+
+</div>
+
+<div class="progress-item">
+
+<div class="progress-info">
+<span>Система управления</span>
+<span>Исследование</span>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width:0%"></div>
+</div>
+
+</div>
+
+<div class="progress-item">
+
+<div class="progress-info">
+<span>Сенсорная обратная связь</span>
+<span>Исследование</span>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width:0%"></div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card col-4">
+
+<div class="card-label">Completed</div>
+
+<h3>Документация</h3>
+
+<p>
+Подготовлен паспорт проекта и начат
+исследовательский дневник.
+</p>
+
+</div>
+
+
+<div class="card col-4">
+
+<div class="card-label">In progress</div>
+
+<h3>Концепция</h3>
+
+<p>
+Уточнение целей, задач и принципов
+будущей системы.
+</p>
+
+</div>
+
+
+<div class="card col-4">
+
+<div class="card-label">Planned</div>
+
+<h3>Техническая проработка</h3>
+
+<p>
+Исследование существующих решений
+и формирование требований.
+</p>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- TECHNOLOGY -->
+
+<section id="technology">
+<div class="container">
+
+<div class="eyebrow">03 / Research directions</div>
+
+<h2 class="section-title">Направления исследований</h2>
+
+<p class="section-description">
+Основные технологические направления,
+которые рассматриваются в рамках AMB.
+</p>
+
+<div class="grid">
+
+<div class="card col-6">
+
+<h3>Роботизированные платформы</h3>
+
+<p>
+Исследование возможностей создания
+различных типов механических тел:
+от модульных платформ до гуманоидных систем.
+</p>
+
+</div>
+
+<div class="card col-6">
+
+<h3>Виртуальная реальность</h3>
+
+<p>
+Использование VR-технологий для визуального
+присутствия оператора в удалённом пространстве.
+</p>
+
+</div>
+
+<div class="card col-6">
+
+<h3>Отслеживание движений</h3>
+
+<p>
+Исследование способов передачи движений
+оператора роботизированной системе.
+</p>
+
+</div>
+
+<div class="card col-6">
+
+<h3>Сенсорная обратная связь</h3>
+
+<p>
+Изучение способов передачи человеку информации
+о взаимодействии механического тела
+с окружающей средой.
+</p>
+
+</div>
+
+<div class="card col-6">
+
+<h3>Перспективные интерфейсы</h3>
+
+<p>
+Исследование потенциального применения
+нейроинтерфейсов в будущих поколениях системы.
+</p>
+
+</div>
+
+<div class="card col-6">
+
+<h3>Доступность технологий</h3>
+
+<p>
+Разработка концепции с ориентацией
+на практическое применение и доступность
+для широкого круга пользователей.
+</p>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- HISTORY -->
+
+<section id="history">
+<div class="container">
+
+<div class="eyebrow">04 / Project history</div>
+
+<h2 class="section-title">История проекта</h2>
+
+<div class="card">
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+21 октября 2026
+</div>
+
+<h3>Начало проекта</h3>
+
+<p>
+Зафиксирована первоначальная концепция
+дополнительного механического тела AMB.
+Начата работа над исследовательским дневником.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+Октябрь 2026
+</div>
+
+<h3>Формирование документации</h3>
+
+<p>
+Подготовлен паспорт проекта.
+Сформированы основные направления
+дальнейшего исследования.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+Будущие обновления
+</div>
+
+<h3>Продолжение разработки</h3>
+
+<p>
+Новые достижения, результаты исследований
+и этапы развития будут добавляться
+по мере выполнения работ.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- AUTHOR -->
+
+<section id="author">
+<div class="container">
+
+<div class="eyebrow">05 / Authorship</div>
+
+<h2 class="section-title">Авторство проекта</h2>
+
+<div class="card">
+
+<h3>
+AMB — Human Cyberization:
+Additional Mechanical Body
+</h3>
+
+<br>
+
+<p>
+Автор проекта: Ярославцев Алексей Леонидович.
+</p>
+
+<p>
+Авторский псевдоним: Аксель Детoв (TDAxelDT).
+</p>
+
+<p>
+Начало проекта: 21 октября 2026 года.
+</p>
+
+<br>
+
+<p>
+© 2026 Аксель Детoв.
+</p>
+
+<div class="notice">
+
+Материалы, опубликованные на данном сайте,
+представляют собой публичную часть проекта AMB.
+
+Публикация отдельных материалов не означает
+предоставления разрешения на их копирование,
+распространение или коммерческое использование.
+
+Авторские права на оригинальные тексты,
+графические материалы и иные охраняемые
+результаты интеллектуальной деятельности
+принадлежат соответствующим правообладателям.
+
+Данный сайт не раскрывает полную техническую
+документацию, внутреннюю архитектуру,
+неопубликованные разработки и конфиденциальные
+материалы проекта.
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container footer-content">
+
+<div>
+
+<div class="footer-logo">AMB PROJECT</div>
+
+<p>
+Human Cyberization:
+Additional Mechanical Body
+</p>
+
+</div>
+
+<div>
+
+<p>Исследовательский проект</p>
+
+<p>Основан в 2026 году</p>
+
+<p>Публичная версия сайта</p>
+
+</div>
+
+</div>
+
+</footer>
+
+</body>
+</html>
